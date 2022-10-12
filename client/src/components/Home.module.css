@@ -1,0 +1,48 @@
+.flex{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 5px 5px 40px 30px rgb(139 139 139 / 70%), inset 0px 0px 0px 46px rgb(139 139 139 / 64%);
+}
+.flex2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.divNoEsc{
+  margin: 0px 60px 0px 0px;
+}
+.divEsc{
+  margin: 0px 0px 0px 60px;
+}
+.btn{
+  margin: 0.5rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #ffdb6d;
+    background-color: #ffdb6d;
+    color: white;
+    font-size: 16px;
+    transition: 400ms;
+}
+
+.btn:hover {
+  background-color: white;
+  color: #ffdb6d;
+  border: 1px solid #ffdb6d
+}
+.select{
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 5px;
+  border: 1px solid #ffdb6d;
+  background-color: #ffdb6d;
+  border-radius: 8px;
+}
+.cardFlex{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2rem;
+  margin-left: -45px;
+}

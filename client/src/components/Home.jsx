@@ -10,12 +10,13 @@ import {
   ordeningPopAsc,
   ordeningPopDesc,
   ordeningNameDesc,
-  ordeningNameAsc
+  ordeningNameAsc,
 } from "../actions";
 import { Link } from "react-router-dom";
 import CountryCard from "./Card";
 import Pagin from "./Pagin";
-import SearchBar from "./SearchBar"
+import SearchBar from "./SearchBar";
+import s from "./Home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ export default function Home() {
   function handleClick(e) {
     e.preventDefault();
     dispatch(getAllCountries());
+    setCurrentPage(1);
   }
   function onClickContinent(e) {
     e.preventDefault();
@@ -64,7 +66,7 @@ export default function Home() {
     if (evento === "asc") {
       setCurrentPage(1);
       dispatch(ordeningPopAsc());
-    } else if ( evento === "desc") {
+    } else if (evento === "desc") {
       setCurrentPage(1);
       dispatch(ordeningPopDesc());
     } else if (evento === "nameDesc") {
@@ -73,77 +75,90 @@ export default function Home() {
     } else {
       setCurrentPage(1);
       dispatch(ordeningNameAsc());
-      
     }
   }
   return (
-    <div>
-      <Link to="/activity"> Crear Actividad</Link>
-      <h1> Country App </h1>
-      <button
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        Back to Countries
-      </button>
+    <div style={{ backgroundColor: "#efeee6" }}>
+      <div className={s.flex}>
+        <div>
+          <h1> Country App </h1>
+        </div>
+        <div>
+          <Link to="/activity">
+            {" "}
+            <button className={s.btn}>Crear Actividad</button>
+          </Link>
+          <button
+            className={s.btn}
+            onClick={(e) => {
+              handleClick(e);
+            }}
+          >
+            Todos los Paises
+          </button>
+        </div>
+      </div>
       <div>
-      <SearchBar/>
-        <select onChange={(e) => onClickordering(e)}>
-          <option defaultValue=""> OrderByName </option>
-          <option key="nameAsc" value="nameAsc">
-            {" "}
-            A - Z{" "}
-          </option>
-          <option key="nameDesc" value="nameDesc">
-            {" "}
-            Z - A{" "}
-          </option>
-        </select>
-        <select onChange={(e) => onClickordering(e)}>
-          <option defaultValue={undefined}> OrderByPopulation </option>
-          <option value="asc"> Min - Max </option>
-          <option value="desc"> Max - Min </option>
-        </select>
-        <select onChange={ (e) => onClickActivities(e)}>
-          <option defaultValue=""> Activities </option>
-          {allActivities.length ? (
-            allActivities.map((a) => {
-              return <option value={a.name}>{a.name}</option>;
-            })
-          ) : (
-            <option value="No activities">No hay actividades</option>
-          )}
-        </select>
-        <select onChange={(e) => onClickContinent(e)}>
-          <option defaultValue="Contient"> Continents </option>
-          {allContinents ? (
-            allContinents.map((c) => {
-              return <option value={c}>{c}</option>;
-            })
-          ) : (
-            <option>Cargando</option>
-          )}
-        </select>
+        <div className={s.flex2}>
+          <SearchBar/>
+          <div className={s.divNoEsc}>
+            <select onChange={(e) => onClickordering(e)} className={s.select}>
+              <option defaultValue=""> Ordenar por Nombre </option>
+              <option key="nameAsc" value="nameAsc">
+                {" "}
+                A - Z{" "}
+              </option>
+              <option key="nameDesc" value="nameDesc">
+                {" "}
+                Z - A{" "}
+              </option>
+            </select>
+            <select onChange={(e) => onClickordering(e)} className={s.select}>
+              <option defaultValue={undefined}> Ordenar por Población</option>
+              <option value="asc"> Min - Max </option>
+              <option value="desc"> Max - Min </option>
+            </select>
+            <select onChange={(e) => onClickActivities(e)} className={s.select}>
+              <option defaultValue=""> Actividades </option>
+              {allActivities.length ? (
+                allActivities.map((a) => {
+                  return <option value={a.name}>{a.name}</option>;
+                })
+              ) : (
+                <option value="No activities">No hay actividades</option>
+              )}
+            </select>
+            <select onChange={(e) => onClickContinent(e)} className={s.select}>
+              <option defaultValue="Contient"> Continentes </option>
+              {allContinents ? (
+                allContinents.map((c) => {
+                  return <option value={c}>{c}</option>;
+                })
+              ) : (
+                <option>Cargando</option>
+              )}
+            </select>
+          </div>
+        </div>
         <Pagin
           countryPerPage={countryPerPage}
           allCountries={allCountries.length}
           paginado={paginado}
         />
-        {currentCountries?.map((c) => {
-          return (
-            <div key={c.id}>
-              <Link to={"/home/" + c.id}>
-                <CountryCard
-                  name={c.name.toUpperCase()}
-                  image={c.image}
-                  continent={c.continent}
-                  id={c.id}
-                />
-              </Link>
-            </div>
-          );
-        })}
+        <div className={s.cardFlex}>
+          {currentCountries?.map((c) => {
+            return (
+              <div key={c.id} className={s.card}>
+                  <CountryCard
+                    name={c.name.toUpperCase()}
+                    image={c.image}
+                    continent={c.continent}
+                    id={c.id}
+                  />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

@@ -34,6 +34,7 @@
 .activities {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2rem;
 }
 
 .flexContainer {
@@ -54,6 +55,13 @@
 
 .imageContainer {
   flex: 50%;
+}
+
+.lists {
+  list-style: none;
+  padding: 0px;
+  margin: 16px;
+  background-color: slategray;
 }
 .button2 {
   display: inline-block;

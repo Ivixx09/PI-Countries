@@ -57,10 +57,9 @@ export default function Detail(propiedades) {
           <div>
               <div className={s.Act}>Actividades: </div>
               <div className={s.activities}>
-              <ul>
                 {country.activities.length? country.activities.map((a) => {
                   return (
-                    <li key={a.name}>
+                    <li key={a.name} className={s.lists}>
                       <h1 className={s.act}>Actividad: {a.name}</h1>
                       <h3 className={s.act}>Duración: {a.duration}</h3>
                       {a.season !== "No especificado" ? (
@@ -72,12 +71,11 @@ export default function Detail(propiedades) {
                     </li>
                   );
                 }) : <div>
-                <p> Aún no hay actividades asociadas a este país :C. ¿Deseas crear una? </p> 
-                <Link to="/activity"><button>Crear Actividad</button></Link>
+                <p style={{"font-size": "23px"}}> Aún no hay actividades asociadas a este país :C. ¿Deseas crear una? </p> 
+                <Link to="/activity"><button className={s.button2}>Crear Actividad</button></Link>
                 </div>
                     
                 }
-              </ul>
               </div>
           </div>
 

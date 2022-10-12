@@ -1,0 +1,10 @@
+.list{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.nav{
+  background: aliceblue;
+    border-radius: 52px;
+}

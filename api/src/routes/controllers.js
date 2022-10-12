@@ -79,7 +79,6 @@ const createActivities = async (req, res) => {
   if (!name1 || !difficulty || !duration || !country) {
     res.status(400).send("Faltan datos");
   } else {
-    console.log(country)
     const activity = await Activity.create({
       name: name1.toLowerCase(),
       difficulty,

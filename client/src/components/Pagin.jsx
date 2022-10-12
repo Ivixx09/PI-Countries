@@ -1,5 +1,5 @@
 import React from "react";
-
+import s from "./Pagin.module.css"
 
 export default function Pagin ({countryPerPage, allCountries, paginado }) {
   const pageNumbers = [];
@@ -10,8 +10,8 @@ export default function Pagin ({countryPerPage, allCountries, paginado }) {
   }
 
   return(
-    <nav>
-      <ul>
+    <nav className={s.nav}>
+      <ul className={s.list}>
         {
           pageNumbers && pageNumbers.map(n => {
             return (

@@ -97,19 +97,26 @@ export default function CreateActivity() {
   }, [input]);
 
   return (
-    <div>
+    <div className={s.container}>
+    <div className={s.flex}>
+      <div>
       <div>
         <h1>PROGRAMA UNA ACTIVIDAD!</h1>
-        <img
+      </div>
+      <div>
+        <img id={s.image}
           src="https://www.grandespymes.com.ar/wp-content/uploads/2020/07/agenda.jpg"
           alt="programar fecha"
         />
       </div>
-      <div>
+      </div>
+      <div className={s.form}>
         <form onSubmit={(e) => handleSubmit(e)} id="form">
-          <div>
-            <label>Nombre:</label>
+          <div className={s.name}>
+            <span>Nombre:</span>
+            <br/>
             <input
+                        className={s.input}
               type="text"
               value={input.name1}
               placeholder="Visitar los Ándes"
@@ -118,9 +125,11 @@ export default function CreateActivity() {
             />
             {errors.name1 && <p>{errors.name1}</p>}
           </div>
-          <div>
+          <div className={s.dificultad}>
             <label>Dificultad:</label>
+            <br/>
             <input
+                        className={s.input}
               type="number"
               value={input.difficulty}
               placeholder="Dificultad entre 1 y 5"
@@ -131,9 +140,12 @@ export default function CreateActivity() {
             />
             {errors.difficulty && <p>{errors.difficulty}</p>}
           </div>
-          <div>
+          <div className={s.duracion}>
+          <br/>
             <label>Duración:</label>
+            <br/>
             <input
+            className={s.input}
               type="number"
               value={input.duration}
               placeholder="Duración de la actividad"
@@ -144,9 +156,10 @@ export default function CreateActivity() {
             />
             {errors.duration && <p>{errors.duration}</p>}
           </div>
-          <div>
+          <div className={s.temporada}>
             <label>Temporada:</label>
-            <select onChange={(e) => handleSelectSeason(e)}>
+            <br/>
+            <select onChange={(e) => handleSelectSeason(e)}             className={s.input}>
               <option value="None">Seleccionar temporada</option>
               <option value="Invierno">Invierno</option>
               <option value="Otoño">Otoño</option>
@@ -161,9 +174,10 @@ export default function CreateActivity() {
             onChange={(e) => handleChange(e)}
           /> */}
           </div>
-          <div>
+          <div className={s.paises}>
             <label>Países </label>
-            <select onChange={(e) => handleSelect(e)}>
+            <br/>
+            <select onChange={(e) => handleSelect(e)}             className={s.input}>
               <option value="none"> País </option>
               {countries.length > 0 &&
                 countries.map((c) => {
@@ -176,7 +190,7 @@ export default function CreateActivity() {
             </select>
             {errors.country && <p>{errors.country}</p>}
           </div>
-          <ul>
+          <ul className={s.lista}>
             {input.country.map((c) => {
               return (
                 <div>
@@ -198,6 +212,7 @@ export default function CreateActivity() {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 }

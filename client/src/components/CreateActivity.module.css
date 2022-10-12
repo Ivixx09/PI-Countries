@@ -1,3 +1,47 @@
+.lista {
+  list-style: none;
+}
+#image{
+  border-radius: 36px;
+}
+.name{
+  padding: 16px 20px 16px 20px;
+}
+.dificultad{
+  padding: 16px 20px 16px 20px;
+}
+.duracion{
+  padding: 16px 20px 16px 20px;
+}
+.temporada{
+  padding: 16px 20px 16px 20px;
+}
+.paises{
+  padding: 16px 20px 16px 20px;
+}
+.container{
+  background-color: rgb(218, 228, 232);
+}
+.input{
+  width: 180px;
+  border-radius: 10px;
+}
+.form{
+  border-radius: 10px;
+  box-shadow: 8px -2px 12px 10px #4c9199;
+  background: #98ced1;
+  width: 360px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  padding-top: 51px;
+  padding-bottom: 62px;
+}
+
+
 .button2 {
   display: inline-block;
   transition: all 0.2s ease-in;
