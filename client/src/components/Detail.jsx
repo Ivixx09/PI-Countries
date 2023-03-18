@@ -13,7 +13,7 @@ export default function Detail(propiedades) {
     return () => {
       dispatch(cleanDetail());
     };
-  }, []);
+  }, [dispatch]);
 
   const country = useSelector((state) => state.detail);
   // useEffect(() => {
